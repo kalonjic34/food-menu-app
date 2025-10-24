@@ -4,7 +4,10 @@ from .models import Item
 
 def index(request):
     item_list = Item.objects.all()
-    return HttpResponse(item_list)
+    context = {
+        'item_list':item_list
+    }
+    return render(request,"myapp/index.html",context)
 
 def item(request):
     return HttpResponse("<h1>This is an item view</h1>")
